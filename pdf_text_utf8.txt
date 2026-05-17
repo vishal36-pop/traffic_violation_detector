@@ -1,0 +1,114 @@
+﻿Course Project: Traffic Rule Violation Detection
+AID 728
+1 Overview
+In this project, you will design a computer vision system to detect traffic rule violations involving
+two-wheelers from street images. The goal is to build a robust, efficient, and modular system
+under strict resource constraints.
+2 Problem Statement
+Given a single RGB image captured from a street scene, your system must:
+1. Detect all two-wheelers (motorcycles/scooters).
+2. Identify whether any of the following violations occur:
+•More than two riders on a two-wheeler.
+•One or more riders not wearing a helmet.
+•Not wearing a helmet and more than two riders.
+3. For each violating vehicle, extract and report theregistration number (license plate).
+3 Constraints
+•Model Size Limit:Total size of all model files must not exceed250 MB.
+•No Large Models:Use of large Vision-Language Models (e.g.,>1B parameters) is
+prohibited.
+•Offline Execution:Internet access will be disabled during evaluation.
+•Inference Efficiency:The system should process each image within a reasonable time.
+4 Output Format
+For each input image, your system must return a JSON-compatible dictionary:
+{
+"violations": [
+{
+"num_riders": int,
+"helmet_violations": int,
+"license_plate": "string"
+}
+]
+}
+where:
+1
+•num riders: Total number of riders detected.
+•helmet violations: Number of riders not wearing helmets.
+•license plate: Recognized license plate string.
+5 Submission Structure
+Each submission must follow the exact directory format:
+<ROLL_NUMBER>/
+solution.py
+models/ (required, <= 250 MB total)
+requirements.txt (required)
+README.md (required)
+6 Mandatory Class Interface
+Students must implement the following class insolution.py:
+class TrafficViolationDetector:
+def __init__(self, model_dir="./models": str):
+"""
+Initialize and load all models here.
+model_dir: path to directory containing model weights.
+"""
+pass
+def predict(self, image_path: str) -> dict:
+"""
+Input:
+image_path: Path to input image
+Output:
+{
+"violations": [
+{
+"num_riders": int,
+"helmet_violations": int,
+"license_plate": "string"
+}
+]
+}
+"""
+pass
+7 Execution Protocol
+During evaluation:
+1. The evaluator will dynamically import your class.
+2. The model will be initialized once:
+model = TrafficViolationDetector(model_dir) #model_dir should be ./models
+2
+3. For each image:
+output = model.predict(image_path)
+8 Evaluation Protocol
+Evaluation will be fully automated using ground-truth annotations.
+8.1 Metrics
+•Violation Classification Accuracy:
+–Correct rider count.
+–Correct helmet violation detection.
+•License Plate Recognition Accuracy:
+–Exact string match or normalized edit distance.
+8.2 Final Score
+Score =w 1 ·Violation +w 2 ·OCR (1)
+9 Implementation Guidelines
+•You may use pretrained models (e.g., YOLO, OCR systems).
+•Depth estimation models (e.g., Depth Anything) may be used if helpful.
+•You are encouraged to design a modular pipeline.
+•The system must be robust to:
+–Occlusions
+–Low lighting
+–Small or blurry license plates
+10 Important Rules
+•All models must be loaded inside the class constructor.
+•predict()must be stateless (no dependency on previous calls).
+•Output format must be strictly followed.
+•Any runtime errors will result in zero score for that sample.
+•Submissions violating model size constraints will be disqualified.
+11 Deliverables
+•Complete source code
+•Model weights (within size limit)
+•Report (recommended, to perform analysis as well as show the failure cases)
+3
+12 Grading Notes
+•This is primarily anengineering-focused project.
+•Emphasis will be on:
+–Robustness
+–System design
+–Failure handling
+•Solutions that generalize well will score higher.
+4
+

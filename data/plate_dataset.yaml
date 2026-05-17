@@ -1,0 +1,11 @@
+# License plate detection dataset (standalone fine-tune)
+# Used only if the combined model's plate detection is insufficient
+
+path: ./data/plate_dataset
+
+train: images/train
+val:   images/val
+
+nc: 1
+names:
+  0: license_plate

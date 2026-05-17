@@ -1,0 +1,20 @@
+# Core ML / CV
+ultralytics>=8.3.0
+torch
+torchvision
+opencv-python
+Pillow
+numpy
+
+# OCR
+easyocr
+
+# Data / Utilities
+PyYAML
+tqdm
+matplotlib
+scipy
+scikit-learn
+
+# Dataset preparation
+kaggle

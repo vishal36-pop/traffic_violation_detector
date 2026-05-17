@@ -1,0 +1,21 @@
+# Combined detection dataset: person (unhelmeted) + helmet + license_plate
+# motorcycle is NOT in this dataset — relies on COCO pretrained weights.
+#
+# Class ID mapping (fixed — DO NOT change order):
+#   0 = motorcycle    (COCO pretrained, no custom data)
+#   1 = person        (bounding box around unhelmeted rider's head/body)
+#   2 = helmet        (bounding box around helmeted rider's head)
+#   3 = license_plate (bounding box around plate region)
+
+# Absolute path — avoids CWD issues when running from different directories
+path: C:\Users\VishalReddyK\OneDrive\Documents\semester 4\Computer Vision\project\traffic_violation_detector\data\combined_dataset
+
+train: images/train
+val: images/val
+
+nc: 4
+names:
+  0: motorcycle
+  1: person
+  2: helmet
+  3: license_plate
