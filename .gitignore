@@ -1,0 +1,24 @@
+# Model weights
+*.pt
+
+# Image files
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+*.webp
+*.tif
+*.tiff
+
+# Python cache
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
